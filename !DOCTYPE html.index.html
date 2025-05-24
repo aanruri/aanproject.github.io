@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aan Ruri - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: #f9ebea;
+            color: LightSalmon;
+            text-align: center;
+            padding: 2rem;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            width: 45%;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aan Ruri Anggraeni</h1>
+        <p>Biologist | Laboratory Analyst</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi! I’m Aan, an water quality analyst. Biology and sustainable environment enthusiast. I love to learn something new, reading books, cooking, travelling, and music composing. Welcome to my page!.</p>
+    </section>
+
+    <section id="projects">
+        <h2>My Work</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>A brief description of your first project. Maybe what you did or used.</p>
+            </div>
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>Another cool thing you worked on. Add details here.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:your.email@example.com">aanruri14@gmail.com</a></p>
+        <p>Find me on: linkedin.com/in/aanruri</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Aan Anggraeni. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+<section id="about">
+    <h2>About Me</h2>
+    <img src="me.jpg" alt="A photo of me" style="max-width: 200px; border-radius: 10px;">
+    <p>Hi! I’m [Your Name], a [your profession/skill] with a passion for [your interest].</p>
+</section>
+
+<section id="projects">
+    <h2>My Work</h2>
+    <div class="carousel">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="project1.jpg" alt="Project 1" style="max-width: 100%;">
+                <h3>Project 1</h3>
+                <p>A cool project I made with [tools/skills].</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="project2.jpg" alt="Project 2" style="max-width: 100%;">
+                <h3>Project 2</h3>
+                <p>Another awesome thing I built.</p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <h3>Project 3</h3>
+                <p>A video demo of my work.</p>
+            </div>
+        </div>
+        <button class="prev">◄</button>
+        <button class="next">►</button>
+    </div>
+</section>
+
+<!-- Add this CSS inside your <style> tag -->
+<style>
+    .carousel {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+        text-align: center;
+    }
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+</style>
+
+<!-- Add this JavaScript just before </body> -->
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    document.querySelector('.next').addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide();
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlide();
+    });
+
+    function updateSlide() {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Optional: Swipe support for touch devices
+    let startX;
+    slides.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    slides.addEventListener('touchmove', (e) => {
+        let diffX = startX - e.touches[0].clientX;
+        if (diffX > 50) {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+            startX = null;
+        } else if (diffX < -50) {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+            startX = null;
+        }
+    });
+</script>
